@@ -9,11 +9,11 @@
 package edu.bu.met.cs665;
 
 import edu.bu.met.cs665.example1.Person;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 public class Main {
-    private static final Logger logger = LogManager.getLogger(Main.class);
+//    private static final Logger logger = LogManager.getLogger(Main.class);
 
     /**
      * A main method to run examples.
@@ -31,14 +31,14 @@ public class Main {
         Main m = new Main();
         System.out.println("This is a test..");
 
-        logger.info(m.doIt());
-
-        logger.trace("Trace Message!");
-        logger.debug("Debug Message!");
-        logger.info("Info Message!");
-        logger.warn("Warn Message!");
-        logger.error("Error Message!");
-        logger.fatal("Fatal Message!");
+//        logger.info(m.doIt());
+//
+//        logger.trace("Trace Message!");
+//        logger.debug("Debug Message!");
+//        logger.info("Info Message!");
+//        logger.warn("Warn Message!");
+//        logger.error("Error Message!");
+//        logger.fatal("Fatal Message!");
     }
 
 
