@@ -13,7 +13,7 @@ Please add a paragraph or two overviewing the objectives of the assignment.
 
 For each assignment, please answer the following:
 
-- Explain the level of flexibility in your implementation, including how new drink types can
+- Explain the level of flexibility in your implementation, including how new object types can
 be easily added or removed in the future.
 - Discuss the simplicity and understandability of your implementation, ensuring that it is
 easy for others to read and maintain.
@@ -24,9 +24,9 @@ chosen.
 
 # Maven Commands
 
-We use Apache Maven to compile and run this project. 
+We'll use Apache Maven to compile and run this project. 
 
-You need to install Apache Maven (https://maven.apache.org/)  on your system. 
+You'll need to install Apache Maven (https://maven.apache.org/) on your system. 
 
 ## Compile
 Type on the command line: 
@@ -37,7 +37,18 @@ mvn clean compile
 
 
 
-## Run JUnit Tests
+## JUnit Tests
+JUnit is a popular testing framework for Java. JUnit tests are automated tests that are written to verify that the behavior of a piece of code is as expected.
+
+In JUnit, tests are written as methods within a test class. Each test method tests a specific aspect of the code and is annotated with the @Test annotation. JUnit provides a range of assertions that can be used to verify the behavior of the code being tested.
+
+JUnit tests are executed automatically and the results of the tests are reported. This allows developers to quickly and easily check if their code is working as expected, and make any necessary changes to fix any issues that are found.
+
+The use of JUnit tests is an important part of Test-Driven Development (TDD), where tests are written before the code they are testing is written. This helps to ensure that the code is written in a way that is easily testable and that all required functionality is covered by tests.
+
+JUnit tests can be run as part of a continuous integration pipeline, where tests are automatically run every time changes are made to the code. This helps to catch any issues as soon as they are introduced, reducing the need for manual testing and making it easier to ensure that the code is always in a releasable state.
+
+To run, use the following command:
 ```bash
 mvn clean test
 ```
