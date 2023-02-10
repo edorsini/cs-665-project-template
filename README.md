@@ -24,9 +24,17 @@ chosen.
 
 # Maven Commands
 
-We'll use Apache Maven to compile and run this project. 
+We'll use Apache Maven to compile and run this project. You'll need to install Apache Maven (https://maven.apache.org/) on your system. 
 
-You'll need to install Apache Maven (https://maven.apache.org/) on your system. 
+Apache Maven is a build automation tool and a project management tool for Java-based projects. Maven provides a standardized way to build, package, and deploy Java applications.
+
+Maven uses a Project Object Model (POM) file to manage the build process and its dependencies. The POM file contains information about the project, such as its dependencies, the build configuration, and the plugins used for building and packaging the project.
+
+Maven provides a centralized repository for storing and accessing dependencies, which makes it easier to manage the dependencies of a project. It also provides a standardized way to build and deploy projects, which helps to ensure that builds are consistent and repeatable.
+
+Maven also integrates with other development tools, such as IDEs and continuous integration systems, making it easier to use as part of a development workflow.
+
+Maven provides a large number of plugins for various tasks, such as compiling code, running tests, generating reports, and creating JAR files. This makes it a versatile tool that can be used for many different types of Java projects.
 
 ## Compile
 Type on the command line: 
