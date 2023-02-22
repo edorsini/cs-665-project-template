@@ -1,36 +1,80 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<!-- This is the root element of the pom.xml file, which defines the project information and specifies the location of the POM schema. The "xmlns" attribute specifies the default namespace for the elements in the file, while "xsi:schemaLocation" provides the location of the schema that the file conforms to. -->
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- This line specifies the version of the Project Object Model (POM) for Maven. It indicates that the project is using version 4.0.0 of the POM. -->
     <modelVersion>4.0.0</modelVersion>
-
+    <!-- This is the Maven groupId of the project, which identifies the project uniquely across all projects. -->
     <groupId>edu.bu.cs665</groupId>
+    <!-- This specifies the name of the project's artifact (e.g., the compiled output file or library) that will be created when the project is built. -->
     <artifactId>JavaProjectTemplate</artifactId>
+    <!-- The version of the project -->
     <version>1.0-SNAPSHOT</version>
+    <!-- This line specifies the packaging type of the project, which in this case is "jar" (Java Archive), meaning that the project will be packaged as a JAR file. -->
     <packaging>jar</packaging>
-
+    <!-- This line sets the name of the Maven project to "JavaProjectTemplate". It can be used to give the project a more descriptive name than just the artifact ID. -->
     <name>JavaProjectTemplate</name>
+    <!-- Specifies the URL where information about the project can be found -->
     <url>http://maven.apache.org</url>
-
+    <!-- The <properties> element is used to define project-wide properties.
+     These properties can be referenced throughout the pom.xml file,
+     and can also be used in other Maven files like profiles and settings. -->
     <properties>
+        <!-- The `maven.compiler.source` property specifies the version of the Java source code
+     that the project uses. In this case, the project is using version 1.8 of the Java
+     programming language. This property is used by the Maven Compiler Plugin to compile
+     the source code. -->
         <maven.compiler.source>1.8</maven.compiler.source>
+        <!-- The `maven.compiler.target` property specifies the version of the JVM that the
+     compiled code should be compatible with. In this case, the compiled code is
+     compatible with version 1.8 of the Java Virtual Machine (JVM). This property
+     is used by the Maven Compiler Plugin to set the target JVM version. -->
         <maven.compiler.target>1.8</maven.compiler.target>
-
+        <!-- The `project.build.sourceEncoding` property specifies the character encoding
+     used by the source files in the project. In this case, the encoding is UTF-8.
+     This property is used by various plugins to ensure that the source code is read
+     and written correctly. -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- The `checkstyle.version` property specifies the version of the Checkstyle plugin
+     that is used to enforce code style and formatting rules. In this case, the
+     Checkstyle plugin version is 8.30. This property is used by the Maven Checkstyle
+     Plugin to configure the Checkstyle rules. -->
         <checkstyle.version>8.30</checkstyle.version>
+        <!-- The `checkstyle.plugin.version` property specifies the version of the Checkstyle
+     plugin that is used to execute Checkstyle checks during the build. In this case,
+     the Checkstyle plugin version is 3.1.0. This property is used by the Maven Checkstyle
+     Plugin to configure the plugin execution. -->
         <checkstyle.plugin.version>3.1.0</checkstyle.plugin.version>
+        <!-- The `sevntu.checkstyle.plugin.version` property specifies the version of the
+     Sevntu Checkstyle plugin that is used to extend Checkstyle with additional
+     rules and features. In this case, the Sevntu Checkstyle plugin version is 1.29.0.
+     This property is used by the Maven Checkstyle Plugin to configure the Sevntu
+     Checkstyle rules. -->
         <sevntu.checkstyle.plugin.version>1.29.0</sevntu.checkstyle.plugin.version>
     </properties>
-
+    <!-- The <reporting> element is used to configure the reporting plugins that generate
+     reports based on the project's build results. These reports can include things
+     like code coverage, test results, and documentation. The reporting configuration
+     is separate from the build configuration and is intended to be used for generating
+     documentation for the project. -->
     <reporting>
+        <!-- The <plugins> element is used to configure the plugins that are used during the
+     build process. Plugins are used to perform various tasks, such as compiling code,
+     running tests, generating documentation, and more. The plugins are executed in the
+     order that they appear in the pom.xml file. -->
         <plugins>
             <plugin>
+                <!-- The <groupId> element specifies the group ID of the plugin. The group ID is
+     used to uniquely identify the plugin in the Maven repository. In this case, the
+     group ID is `org.apache.maven.plugins`, which is the group ID used for the
+     standard Maven plugins. -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
                 <version>2.5</version>
             </plugin>
         </plugins>
     </reporting>
-
     <build>
         <extensions>
             <extension>
@@ -39,9 +83,7 @@
                 <version>3.0.0</version>
             </extension>
         </extensions>
-
         <plugins>
-
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
@@ -63,8 +105,10 @@
                     <sourceEncoding>UTF8</sourceEncoding>
                 </configuration>
             </plugin>
-            
             <plugin>
+                <!-- org.codehaus.mojo is a group ID that is used for a collection of Maven plugins developed by the Codehaus Mojo project. These plugins are intended to make it easier to perform various tasks during the build process, such as deploying artifacts, running scripts, and generating documentation.
+                Codehaus was a community-driven organization that provided a platform for open-source software development, and the Mojo project was one of many projects hosted by Codehaus. Although Codehaus is no longer active, the Codehaus Mojo plugins continue to be maintained and updated by the community.
+                Some popular Codehaus Mojo plugins include build-helper-maven-plugin, exec-maven-plugin, javadoc-maven-plugin, and versions-maven-plugin. -->
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.3</version>
@@ -83,7 +127,6 @@
                     <cleanupDaemonThreads>false</cleanupDaemonThreads>
                 </configuration>
             </plugin>
-
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
@@ -97,7 +140,6 @@
                     </descriptorRefs>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -121,14 +163,10 @@
                     <configLocation>config/google_checks.xml</configLocation>
                     <failOnViolation>false</failOnViolation>
                     <consoleOutput>true</consoleOutput>
-
                 </configuration>
             </plugin>
-
         </plugins>
-
     </build>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -141,6 +179,5 @@
             <artifactId>log4j-core</artifactId>
             <version>2.19.0</version>
         </dependency>
-
     </dependencies>
 </project>
