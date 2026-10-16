@@ -98,6 +98,8 @@ By using Checkstyle, developers can ensure that their code adheres to a consiste
 
 Checkstyle is highly configurable and can be customized to fit the needs of your team or organization. It supports a wide range of coding standards and can be integrated with other tools, such as code coverage and automated testing tools, to create a comprehensive and automated software development process.
 
+In this template, Checkstyle is informational: violations are reported, but they do not fail the Maven build. Review and fix the reported issues as part of your work; a successful build does not necessarily mean that the Checkstyle checks passed.
+
 The following command will generate a report in HTML format that you can open in a web browser. 
 
 ```bash
@@ -106,7 +108,6 @@ mvn checkstyle:checkstyle
 
 The HTML page will be found at the following location:
 `target/site/checkstyle.html`
-
 
 
 
