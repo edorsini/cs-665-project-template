@@ -98,7 +98,25 @@ By using Checkstyle, developers can ensure that their code adheres to a consiste
 
 Checkstyle is highly configurable and can be customized to fit the needs of your team or organization. It supports a wide range of coding standards and can be integrated with other tools, such as code coverage and automated testing tools, to create a comprehensive and automated software development process.
 
-In this template, Checkstyle is informational: violations are reported, but they do not fail the Maven build. Review and fix the reported issues as part of your work; a successful build does not necessarily mean that the Checkstyle checks passed.
+In this template, Checkstyle is informational: violations are reported, but they do not fail the Maven build. This behavior is controlled by the `failOnViolation` setting in the `maven-checkstyle-plugin` configuration in `pom.xml`, which is currently set to `false`. Review and fix the reported issues as part of your work; a successful build does not necessarily mean that the Checkstyle checks passed.
+
+To make Checkstyle violations fail the build, change that setting to `true`:
+
+```xml
+<configuration>
+    <configLocation>config/google_checks.xml</configLocation>
+    <failOnViolation>true</failOnViolation>
+    <consoleOutput>true</consoleOutput>
+</configuration>
+```
+
+Then run the Checkstyle check explicitly:
+
+```bash
+mvn checkstyle:check
+```
+
+With this configuration, the check goal fails when it finds violations. The report-generation command below remains useful for reviewing the detailed results.
 
 The following command will generate a report in HTML format that you can open in a web browser. 
 
@@ -108,6 +126,5 @@ mvn checkstyle:checkstyle
 
 The HTML page will be found at the following location:
 `target/site/checkstyle.html`
-
 
 
