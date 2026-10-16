@@ -68,7 +68,8 @@ public class Person {
       throw new IllegalStateException("Cannot calculate age without a birthday.");
     }
     if (asOfDate.isBefore(birthday)) {
-      throw new IllegalArgumentException("The date of age calculation cannot precede the birthday.");
+      throw new IllegalArgumentException(
+          "The date of age calculation cannot precede the birthday.");
     }
     return Period.between(birthday, asOfDate).getYears();
   }

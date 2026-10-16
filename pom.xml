@@ -21,29 +21,17 @@
      These properties can be referenced throughout the pom.xml file,
      and can also be used in other Maven files like profiles and settings. -->
     <properties>
-        <!-- Compile against the Java 8 API and produce Java 8-compatible bytecode. -->
-        <maven.compiler.release>8</maven.compiler.release>
+        <!-- Compile against the Java 25 API and produce Java 25-compatible bytecode. -->
+        <maven.compiler.release>25</maven.compiler.release>
         <!-- The `project.build.sourceEncoding` property specifies the character encoding
      used by the source files in the project. In this case, the encoding is UTF-8.
      This property is used by various plugins to ensure that the source code is read
      and written correctly. -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- The `checkstyle.version` property specifies the version of the Checkstyle plugin
-     that is used to enforce code style and formatting rules. In this case, the
-     Checkstyle plugin version is 8.30. This property is used by the Maven Checkstyle
-     Plugin to configure the Checkstyle rules. -->
-        <checkstyle.version>8.30</checkstyle.version>
-        <!-- The `checkstyle.plugin.version` property specifies the version of the Checkstyle
-     plugin that is used to execute Checkstyle checks during the build. In this case,
-     the Checkstyle plugin version is 3.1.0. This property is used by the Maven Checkstyle
-     Plugin to configure the plugin execution. -->
-        <checkstyle.plugin.version>3.1.0</checkstyle.plugin.version>
-        <!-- The `sevntu.checkstyle.plugin.version` property specifies the version of the
-     Sevntu Checkstyle plugin that is used to extend Checkstyle with additional
-     rules and features. In this case, the Sevntu Checkstyle plugin version is 1.29.0.
-     This property is used by the Maven Checkstyle Plugin to configure the Sevntu
-     Checkstyle rules. -->
-        <sevntu.checkstyle.plugin.version>1.29.0</sevntu.checkstyle.plugin.version>
+        <!-- Checkstyle engine and Maven plugin versions for code-style checks. -->
+        <checkstyle.version>10.26.1</checkstyle.version>
+        <checkstyle.plugin.version>3.6.0</checkstyle.plugin.version>
+        <sevntu.checkstyle.plugin.version>1.35.0</sevntu.checkstyle.plugin.version>
     </properties>
     <!-- The <reporting> element is used to configure the reporting plugins that generate
      reports based on the project's build results. These reports can include things
@@ -63,7 +51,7 @@
      standard Maven plugins. -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
-                <version>2.5</version>
+                <version>3.6.0</version>
             </plugin>
         </plugins>
     </reporting>
@@ -77,20 +65,38 @@
         </extensions>
         <plugins>
             <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.15</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
+                <version>3.16.0</version>
             </plugin>
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.1.3</version>
+                <version>4.10.5.0</version>
                 <dependencies>
-                    <!-- overwrite dependency on spotbugs if you want to specify the version of spotbugs -->
                     <dependency>
                         <groupId>com.github.spotbugs</groupId>
                         <artifactId>spotbugs</artifactId>
-                        <version>4.2.0</version>
+                        <version>4.10.5</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -108,7 +114,7 @@
                 Some popular Codehaus Mojo plugins include build-helper-maven-plugin, exec-maven-plugin, javadoc-maven-plugin, and versions-maven-plugin. -->
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.3</version>
+                <version>3.6.4</version>
                 <executions>
                     <execution>
                         <goals>
@@ -119,13 +125,14 @@
                 <configuration>
                     <includeProjectDependencies>true</includeProjectDependencies>
                     <includePluginDependencies>true</includePluginDependencies>
-                    <killAfter>-1</killAfter>
                     <mainClass>edu.bu.met.cs665.Main</mainClass>
                     <cleanupDaemonThreads>false</cleanupDaemonThreads>
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.8.0</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -168,13 +175,13 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.1</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.19.0</version>
+            <version>2.26.1</version>
         </dependency>
     </dependencies>
 </project>
