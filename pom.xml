@@ -21,16 +21,8 @@
      These properties can be referenced throughout the pom.xml file,
      and can also be used in other Maven files like profiles and settings. -->
     <properties>
-        <!-- The `maven.compiler.source` property specifies the version of the Java source code
-     that the project uses. In this case, the project is using version 1.8 of the Java
-     programming language. This property is used by the Maven Compiler Plugin to compile
-     the source code. -->
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <!-- The `maven.compiler.target` property specifies the version of the JVM that the
-     compiled code should be compatible with. In this case, the compiled code is
-     compatible with version 1.8 of the Java Virtual Machine (JVM). This property
-     is used by the Maven Compiler Plugin to set the target JVM version. -->
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <!-- Compile against the Java 8 API and produce Java 8-compatible bytecode. -->
+        <maven.compiler.release>8</maven.compiler.release>
         <!-- The `project.build.sourceEncoding` property specifies the character encoding
      used by the source files in the project. In this case, the encoding is UTF-8.
      This property is used by various plugins to ensure that the source code is read
@@ -84,6 +76,11 @@
             </extension>
         </extensions>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+            </plugin>
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
