@@ -70,6 +70,18 @@ Run the sample application:
 mvn exec:java
 ```
 
+Launch the SpotBugs GUI:
+
+```bash
+mvn spotbugs:gui
+```
+
+Generate the Checkstyle report:
+
+```bash
+mvn checkstyle:checkstyle
+```
+
 ## Useful reports
 
 After running verification, inspect the generated reports in the `target/` directory:
